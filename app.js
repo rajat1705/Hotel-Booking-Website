@@ -32,6 +32,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
 //seedDB();
+app.set('view engine', 'ejs');
 
 //PASSPORT CONFIGURATION
 app.use(require("express-session")({
@@ -92,8 +93,8 @@ app.post('/pay', (req,res) => {
 			"payment_method": "paypal"
 		},
 		"redirect_urls": {
-			"return_url": "http://localhost:3000/success",
-			"cancel_url": "http://localhost:3000/cancel"
+			"return_url": "https://hotelbooking17.herokuapp.com/success",
+			"cancel_url": "https://hotelbooking17.herokuapp.com/cancel"
 		},
 		"transactions": [{
 			"item_list": {
@@ -178,6 +179,6 @@ app.get("/cancel", (req, res) => {
 	res.send('Cancelled');
 });
 
-app.listen(3000, function(){
-	console.log("Server Started");
-});
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, console.log(`Server started on port ${PORT}`));
