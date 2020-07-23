@@ -1,0 +1,29 @@
+<% include ../partials/header %>
+
+<div class = "container">
+	<h1 style = "text-align: center;">
+		Book <%= hotel.name %> Room
+	</h1>
+	<div style = "width: 30%; margin: 25px auto">
+		<form action = "/pay" method = "POST">
+			<div class = "form-group">
+				<input class = "form-control" type = "text" placeholder="Name" name = "customer">
+			</div>
+			<div class = "form-group">
+				<input class = "form-control" type = "date" placeholder="Date" name = "date">
+			</div>
+			<div class = "form-group">
+				<input class = "form-control" type = "text" value="<%= hotel.name %>" name = "roomType" readonly>
+			</div>
+			<div class = "form-group">
+				<input class = "form-control" type = "text" value="<%= hotel.price %>" name = "price" readonly>
+			</div>
+			<div class = "form-group">
+				<button class = "btn btn-lg btn-primary btn-block">Proceed to Pay</button>
+			</div>
+		</form>
+		<a href = "/hotels/<%= hotel._id %>" >Go Back</a>
+	</div>
+</div>
+	
+<% include ../partials/footer %>

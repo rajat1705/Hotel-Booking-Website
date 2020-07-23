@@ -1,0 +1,21 @@
+<% include ./partials/header %>
+<div>
+    <h1 class="text-center mt-3">Your Bookings</h1>
+</div>
+
+<% for(var i=user.bookings.length-1; i>=0; i--){ %>
+    <div class="card mb-3 cardstyle" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="card-body">
+            <h5 class="card-title">BookingID : <%= user.bookings[i]._id %></h5>
+            <div class="card-text">Name: <%= user.bookings[i].name %></div>
+            <div class="card-text">Room Booked: <%= user.bookings[i].roomType %></div>
+            <div class="card-text">Booking Date: <%= user.bookings[i].date %></div>
+            <div class="card-text">Amount Paid: <%= user.bookings[i].amount %></div>
+            <p class="card-text">Status: Paid</p>
+            </div>
+        </div>
+    </div>
+<% } %>
+
+<% include ./partials/footer %> 

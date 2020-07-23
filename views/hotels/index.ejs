@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+
+<div class = 'container'>
+	<header class = 'jumbotron jum'>
+		<div class = 'container'>
+			<h1>The Peninsula</h1>
+			<p>Experience the Luxury</p>
+			<% if(currentUser && currentUser.type === "admin") { %>
+				<p>
+					<a href = "/hotels/new" class = "btn btn-info btn-large">Add a New Room</a>
+				</p>
+			<% } %>
+		</div>
+	</header>
+	
+	<div class = 'row text-center'>
+		<% for(var i=0; i<hotels.length; i++){ %>
+		<div class = 'col-md-4 col-sm-6 mt-3'>
+			<div class="card">
+				<img src = "<%= hotels[i].image %>" class="card-img-top">
+				<div class = class="card-title"><h4><%= hotels[i].name %> </h4></div>
+				<p>
+					<a href = "/hotels/<%= hotels[i]._id %>" class = "btn btn-info">More Info</a>		  		  
+				</p>
+			</div>
+		</div>
+		<% } %>	
+	</div>
+	
+</div>
+
+<% include ../partials/footer %>
