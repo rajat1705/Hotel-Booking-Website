@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Hotel = require('../models/hotel');
 var middleware = require('../middleware')
+var keys = require('../config/keys.js')
 
 //INDEX - show all hotel
 router.get("/hotels", function(req, res){
@@ -43,7 +44,7 @@ router.get("/hotels/:id", function(req, res){
 			req.flash("error", "Hotel not found");
 			res.redirect("back");
 		} else{
-			res.render("hotels/show.ejs", {hotel: foundHotel});
+			res.render("hotels/show.ejs", {hotel: foundHotel, google_api_key: keys.google.api_key});
 		}
 	});
 });
