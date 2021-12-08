@@ -54,19 +54,16 @@
 					   	<form class="delete-form" action="/hotels/<%= hotel._id %>?_method=DELETE" method="POST">
 							<button class = "btn btn-danger">Delete</button>
 						</form>
-					<% } else if(currentUser && currentUser.type === "customer") { %>  
-						<a href = "/hotels/<%= hotel._id %>/book" class = "btn btn-info">Book Now</a>
 					<% } %>
+					<a href = "/hotels/<%= hotel._id %>/book" class = "btn btn-info">Book Now</a>
 				</div>
 			</div>
 
 			<div class = "well">
 				<div class = "text-right">
-					<% if(currentUser) { %>
-						<a class = "btn btn-success" href = "/hotels/<%=hotel._id%>/comments/new">
-							Add New Comment
-						</a>
-					<% } %>
+					<a class = "btn btn-success" href = "/hotels/<%=hotel._id%>/comments/new">
+						Add New Comment
+					</a>
 				</div>
 				<hr>
 				<% hotel.comments.forEach(function(comment){ %>

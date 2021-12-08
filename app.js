@@ -26,7 +26,7 @@ paypal.configure({
 	'client_secret': keys.paypal.client_secret
 });
 
-mongoose.connect("mongodb+srv://rajat1705:%40What2do@hotel-booking.ywlpq.mongodb.net/test?authSource=admin&replicaSet=atlas-jh23tt-shard-0&readPreference=primary&appname=MongoDB%20Compass%20Community&ssl=true44444444444", {useNewUrlParser: true});
+mongoose.connect(keys.mongodb.uri, { useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));

@@ -6,9 +6,7 @@ var middlewareObj = {};
 
 middlewareObj.checkHotelOwnership = function(req, res, next){
 	if(req.isAuthenticated() && req.user.type === "admin"){
-		Hotel.findById(req.params.id, function(err, foundHotel){
-			next();
-		});
+		next();
 	} else{
 		req.flash("error", "You need to be logged in to that");
 		res.redirect("back");
