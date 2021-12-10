@@ -26,7 +26,7 @@ paypal.configure({
 	'client_secret': keys.paypal.client_secret
 });
 
-mongoose.connect(keys.mongodb.uri, { useNewUrlParser: true});
+mongoose.connect(keys.mongodb.uri, { useNewUrlParser: true, useUnifiedTopology: true });
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
@@ -35,10 +35,12 @@ app.use(flash());
 app.set('view engine', 'ejs');
 
 //PASSPORT CONFIGURATION
+require('./config/passport.js')(passport)
+
 app.use(require("express-session")({
 	secret: "text",
 	resave: false,
-	uninitialized: false
+	saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());

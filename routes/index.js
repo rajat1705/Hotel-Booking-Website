@@ -52,4 +52,12 @@ router.get("/logout", function(req, res){
 	res.redirect("/hotels");
 });
 
+// Auth with google
+router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email']}));
+
+// Google auth callback
+router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login'}), function(req, res) {
+	res.redirect('/hotels');
+})
+
 module.exports = router;
