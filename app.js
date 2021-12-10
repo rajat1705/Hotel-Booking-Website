@@ -12,7 +12,8 @@ var User = require("./models/user.js");
 var Booking = require("./models/booking.js");
 var middleware = require('./middleware')
 var paypal = require('paypal-rest-sdk');
-var keys = require('./config/keys.js')
+
+require('dotenv').config()
 
 //requiring routes
 var hotelRoutes = require('./routes/hotels');
@@ -22,11 +23,11 @@ var indexRoutes = require('./routes/index')
 //paypal configure
 paypal.configure({
 	'mode': 'sandbox', //sandbox or live
-	'client_id': keys.paypal.client_id,
-	'client_secret': keys.paypal.client_secret
+	'client_id': process.env.PAYPAL_CLIENT_ID,
+	'client_secret': process.env.PAYPAL_CLIENT_SECRET
 });
 
-mongoose.connect(keys.mongodb.uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
